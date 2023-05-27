@@ -7,6 +7,7 @@ services:
       POSTGRES_DB: concourse
       POSTGRES_USER: concourse_user
       POSTGRES_PASSWORD: concourse_pass
+    restart: always
     logging:
       driver: "json-file"
       options:
@@ -27,6 +28,7 @@ services:
       CONCOURSE_POSTGRES_DATABASE: concourse
       CONCOURSE_ADD_LOCAL_USER: test:test
       CONCOURSE_MAIN_TEAM_LOCAL_USER: test
+    restart: always
     logging:
       driver: "json-file"
       options:
@@ -45,6 +47,7 @@ services:
       # enable DNS proxy to support Docker's 127.x.x.x DNS server
       CONCOURSE_GARDEN_DNS_PROXY_ENABLE: "true"
       CONCOURSE_RUNTIME: "containerd"
+    restart: always
     logging:
       driver: "json-file"
       options:
