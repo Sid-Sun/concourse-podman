@@ -16,7 +16,6 @@ services:
   web:
     image: concourse/concourse
     command: web
-    links: [db]
     depends_on: [db]
     ports: ["8080:8080"]
     volumes: ["./keys/web:/concourse-keys"]
@@ -40,7 +39,6 @@ services:
     privileged: true
     depends_on: [web]
     volumes: ["./keys/worker:/concourse-keys"]
-    links: [web]
     stop_signal: SIGUSR2
     environment:
       CONCOURSE_TSA_HOST: web:2222
