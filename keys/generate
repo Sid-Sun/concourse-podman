@@ -11,13 +11,13 @@ if [ "$_MSYSTEM" == "MINGW64" ]; then
   WORK_DIR="$(cygpath -t windows $(pwd))"
 fi
 
-podman run --rm -v "$WORK_DIR/web":/keys concourse/concourse \
+podman run --rm -v "$WORK_DIR/web":/keys docker.io/concourse/concourse \
   generate-key -t rsa -f /keys/session_signing_key
 
-podman run --rm -v "$WORK_DIR/web":/keys concourse/concourse \
+podman run --rm -v "$WORK_DIR/web":/keys docker.io/concourse/concourse \
   generate-key -t ssh -f /keys/tsa_host_key
 
-podman run --rm -v "$WORK_DIR/worker":/keys concourse/concourse \
+podman run --rm -v "$WORK_DIR/worker":/keys docker.io/concourse/concourse \
   generate-key -t ssh -f /keys/worker_key
 
 cp ./worker/worker_key.pub ./web/authorized_worker_keys

@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: postgres
+    image: docker.io/postgres
     environment:
       POSTGRES_DB: concourse
       POSTGRES_USER: concourse_user
@@ -15,7 +15,7 @@ services:
         max-size: "10m"
 
   web:
-    image: concourse/concourse
+    image: docker.io/concourse/concourse
     command: web
     depends_on: [db]
     ports: ["8080:8080"]
@@ -36,7 +36,7 @@ services:
         max-size: "10m"
 
   worker:
-    image: concourse/concourse
+    image: docker.io/concourse/concourse
     command: worker
     privileged: true
     depends_on: [web]
