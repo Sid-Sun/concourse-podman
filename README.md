@@ -73,7 +73,7 @@ Starting concourse-podman_worker_1 ... done
 ```
 ### Ensure containers are running:
 ```sh
-$ docker-compose PS
+$ docker-compose ps
 ```
 or
 ```sh
